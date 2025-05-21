@@ -1,4 +1,4 @@
-package com.MC_656.mobility.entity;
+package com.mc_656.mobility.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

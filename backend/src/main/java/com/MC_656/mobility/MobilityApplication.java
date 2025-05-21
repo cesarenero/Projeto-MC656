@@ -1,4 +1,4 @@
-package com.MC_656.mobility;
+package com.mc_656.mobility;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,6 @@
-package com.MC_656.mobility.repository;
+package com.mc_656.mobility.repository;
 
-import com.MC_656.mobility.entity.Usuario;
+import com.mc_656.mobility.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

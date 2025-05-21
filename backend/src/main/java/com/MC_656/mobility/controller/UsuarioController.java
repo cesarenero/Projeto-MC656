@@ -1,6 +1,6 @@
-package com.MC_656.mobility.controller;
+package com.mc_656.mobility.controller;
 
-import com.MC_656.mobility.dto.CadastroUsuarioRequest;
+import com.mc_656.mobility.dto.CadastroUsuarioRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;

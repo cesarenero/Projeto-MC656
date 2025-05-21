@@ -1,4 +1,4 @@
-package com.MC_656.mobility.dto;
+package com.mc_656.mobility.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
