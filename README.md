@@ -59,8 +59,6 @@ Cada tipo de documento possui uma implementação específica da interface `Docu
 
 ### Diagrama de Componentes (C4 - Nível 3)
 
-
-
 ```mermaid
 graph TD
   subgraph Backend
@@ -84,4 +82,4 @@ graph TD
   Service --> ExtPayment[External Payment API]
   Repository --> Database[(Database)]
 
----
+
