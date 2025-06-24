@@ -20,23 +20,33 @@ class RegisterModel: ObservableObject, CustomButtonDelegate {
     @Published var showError: Bool = false
     @Published var errorMessage: String?
     
-    private let service = RegisterService()
+    private let service: RegisterServiceProtocol // Use the protocol
+
+    init(service: RegisterServiceProtocol = RegisterService()) { // Dependency Injection
+        self.service = service
+    }
 
     @MainActor
     func register() async {
         isLoading = true
+        showError = false // Reset error state
+        errorMessage = nil
         defer { isLoading = false }
 
         do {
             try fullName.check(.name)
+            // Social name can be empty, but if not, it should be valid.
+            // The current regex ^[a-zA-Z\\s]{0,20}$ allows empty.
             try socialName.check(.socialName)
             try email.check(.email)
             try phone.check(.phoneNumber)
-            try cpf.check(.cpf)
+            try cpf.check(.cpf) // This uses .invalidPhoneNumber error in String+Checks.swift, which is a bug.
             try password.check(.password)
             try password.comparePassword(with: passwordConfirmation)
 
-            try await service.callRegister(name: fullName, socialName: socialName, email: email, phone: phone, cpf: cpf, password: password)
+            // Use socialName if not empty, otherwise backend might expect null or not expect the field
+            let effectiveSocialName = socialName.isEmpty ? nil : socialName
+            try await service.callRegister(name: fullName, socialName: effectiveSocialName, email: email, phone: phone, cpf: cpf, password: password)
 
         } catch {
             showError = true

@@ -27,7 +27,7 @@ extension String {
             case .phoneNumber:
                 DataError.invalidPhoneNumber
             case .cpf:
-                DataError.invalidPhoneNumber
+                DataError.invalidCPF // Corrected error type
             case .password:
                 DataError.invalidPassword
             }
