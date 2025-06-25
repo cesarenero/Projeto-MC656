@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct Projeto_MC656App: App {
+    @StateObject private var model = InitialModel()
+
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                InitialView()
+                if model.isLoggedIn {
+                    VehicleListView()
+                } else {
+                    InitialView()
+                        .environmentObject(model)
+                }
             }
         }
     }

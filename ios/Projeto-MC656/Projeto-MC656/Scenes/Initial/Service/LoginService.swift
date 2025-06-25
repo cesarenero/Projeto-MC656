@@ -8,10 +8,18 @@
 import Foundation
 
 class LoginService {
+    private let client = ApiClient()
+    
     func callAuth(email: String, password: String) async throws -> LoginResponse {
-//        try await callBack
-        try await Task.sleep(nanoseconds: 1_000_000_000)
-
-        return LoginResponse(token: "token_mockado")
+        let body = [
+            "username": email,
+            "password": password
+        ]
+        
+        let response = try await client.post(url: ApiEndpoints.Auth.login, requestBody: body, responseType: LoginResponse.self)
+        
+        AuthManager.shared.token = response.token
+        
+        return response
     }
 }

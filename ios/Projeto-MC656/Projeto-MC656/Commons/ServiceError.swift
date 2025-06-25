@@ -10,6 +10,7 @@ import Foundation
 enum ServiceError: Error, LocalizedError, Equatable {
     case invalidCredentials
     case serverError(String)
+    case missingToken
 
     var errorDescription: String? {
         switch self {
@@ -17,6 +18,8 @@ enum ServiceError: Error, LocalizedError, Equatable {
             return "E-mail ou senha incorretos."
         case .serverError(let message):
             return message
+        case .missingToken:
+            return "Usuário não autenticado."
         }
     }
 }

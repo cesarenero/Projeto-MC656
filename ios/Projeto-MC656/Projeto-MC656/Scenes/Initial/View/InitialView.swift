@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InitialView: View {
     private var screenPadding: CGFloat = 24
-    @StateObject private var model: InitialModel = InitialModel()
+    @EnvironmentObject private var model: InitialModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
